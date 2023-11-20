@@ -34,4 +34,4 @@ RUN node -v
 # Expose port if your application uses one
 # EXPOSE your_port
 
-CMD ["python", "proof.py", "inkjs_v2.2.1", "inkjs_v2.2.1_runtime"]
+CMD ["python", "proof.py", "inkjs_v2.2.1_runtime"]
