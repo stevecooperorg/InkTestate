@@ -8,6 +8,9 @@ ARG COMMIT_HASH=d6b68e3026b4f97ea0e8ae92b6da561441b131ae
 RUN git clone https://github.com/chromy/ink-proof.git . \
     && git checkout ${COMMIT_HASH}
 
+RUN rm -rf .git bytecode ink
+RUN mkdir -p bytecode ink
+
 # Stage 2: Build
 FROM base AS builder
 # Install Python dependencies
@@ -34,4 +37,4 @@ RUN node -v
 # Expose port if your application uses one
 # EXPOSE your_port
 
-CMD ["python", "proof.py", "inkjs_v2.2.1_runtime"]
+CMD ["python", "proof.py", "inkjs_v2.2.1", "inkjs_v2.2.1_runtime"]

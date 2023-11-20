@@ -1,6 +1,11 @@
 run: build
-	docker run -v $(shell pwd)/out:/app/out -v $(shell pwd)/examples/basic:/app/ink inktestate:latest
+	rm -rf out
+	mkdir -p out
+	docker run \
+		-v $(shell pwd)/out:/app/out \
+		-v $(shell pwd)/examples/basic:/app/ink \
+        -v $(shell pwd)/examples/bytecode:/app/bytecode \
+        inktestate:latest
 
 build:
 	cd docker && docker build -t inktestate:latest .
-	mkdir -p out
