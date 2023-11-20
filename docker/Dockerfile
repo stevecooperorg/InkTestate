@@ -22,9 +22,15 @@ RUN python3 install_deps.py
 
 # Stage 3: Final image
 FROM python:3.7-slim
+
+# Install Node.js in the final stage
+RUN apt-get update && apt-get install -y nodejs npm
+
 WORKDIR /app
+ENV NODE_PATH=/usr/local/lib/node_modules
 COPY --from=builder /app .
 
+RUN node -v
 # Expose port if your application uses one
 # EXPOSE your_port
 
